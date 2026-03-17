@@ -222,38 +222,140 @@ function ArtistSpotlight() {
 }
 
 // ─── ARTIST SUBMIT + TICKETS ──────────────────────────────────────────────────
+// ─── TICKET DATA ─────────────────────────────────────────────────────────────
+const HUGLIFE_TICKET_HUB = "https://huglife.vercel.app/#tickets";
+
 function TakeYourPlace() {
   return (
     <section id="submit" style={{ background: C.base, padding: "120px clamp(24px,5vw,80px)", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 60%, ${C.crimGlow} 0%, transparent 55%)` }} />
       <Grain />
       <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-        <Reveal><h2 style={{ fontFamily: F.display, fontSize: "clamp(40px,7vw,100px)", fontWeight: 700, letterSpacing: "0.04em", color: C.cream, marginBottom: "64px", textAlign: "center" }}>TAKE YOUR PLACE</h2></Reveal>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3px", background: C.border }}>
+        <Reveal>
+          <div style={{ fontFamily: F.mono, fontSize: "9px", letterSpacing: "0.4em", textTransform: "uppercase", color: C.crimson, marginBottom: "16px" }}>
+            Tickets & Submissions
+          </div>
+          <h2 style={{ fontFamily: F.display, fontSize: "clamp(40px,7vw,100px)", fontWeight: 700, letterSpacing: "0.04em", color: C.cream, marginBottom: "64px" }}>
+            TAKE YOUR PLACE
+          </h2>
+        </Reveal>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3px", background: C.border, marginBottom: "3px" }}>
+          {/* ── FAN TICKETS ── */}
           <Reveal>
-            <div style={{ background: C.surface, padding: "64px 48px", position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: C.crimson }} />
-              <div style={{ fontFamily: F.mono, fontSize: "9px", letterSpacing: "0.4em", textTransform: "uppercase", color: C.crimson, marginBottom: "20px" }}>For Artists</div>
-              <h3 style={{ fontFamily: F.display, fontSize: "clamp(24px,3.5vw,44px)", fontWeight: 600, letterSpacing: "0.04em", color: C.cream, marginBottom: "16px" }}>SUBMIT YOUR SET</h3>
+            <div id="tickets" style={{ background: C.panel, padding: "64px 48px", position: "relative", overflow: "hidden", height: "100%" }}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: C.gold }} />
+
+              {/* Live badge */}
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "20px" }}>
+                <div style={{
+                  width: "8px", height: "8px", borderRadius: "50%",
+                  background: "#4ADE80", boxShadow: "0 0 8px #4ADE80",
+                  animation: "ticketPulse 2s ease-in-out infinite",
+                }} />
+                <span style={{ fontFamily: F.mono, fontSize: "9px", letterSpacing: "0.3em", color: "#4ADE80", textTransform: "uppercase" }}>
+                  Tickets On Sale
+                </span>
+              </div>
+
+              <div style={{ fontFamily: F.mono, fontSize: "9px", letterSpacing: "0.4em", textTransform: "uppercase", color: C.gold, marginBottom: "20px" }}>
+                For Fans
+              </div>
+              <h3 style={{ fontFamily: F.display, fontSize: "clamp(24px,3.5vw,44px)", fontWeight: 600, letterSpacing: "0.04em", color: C.cream, marginBottom: "16px" }}>
+                GET YOUR TICKET
+              </h3>
               <p style={{ fontFamily: F.body, fontSize: "14px", lineHeight: 1.8, color: C.muted, marginBottom: "32px" }}>
-                Emerging artists can apply for performance slots. We review demos, socials, and presence. No industry gatekeeping — just talent and hunger.
+                Join the room where the next wave breaks. General Admission is your all-access pass to every performance on the bill. Capacity is limited.
               </p>
-              <a href="mailto:thekollectiveworldwide@gmail.com?subject=Underground King Artist Submission" style={{ fontFamily: F.body, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: C.cream, background: C.crimson, padding: "15px 40px", textDecoration: "none", display: "inline-block" }}>Submit Now →</a>
+              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                <a href={HUGLIFE_TICKET_HUB} target="_blank" rel="noopener noreferrer" style={{
+                  fontFamily: F.body, fontSize: "11px", fontWeight: 700,
+                  letterSpacing: "0.15em", textTransform: "uppercase",
+                  color: C.base, background: C.gold, padding: "16px 40px",
+                  textDecoration: "none", display: "inline-block", transition: "all 0.3s",
+                }}
+                  onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"}
+                  onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"}
+                >
+                  Buy Tickets →
+                </a>
+                <a href="mailto:thekollectiveworldwide@gmail.com?subject=Underground King Group Ticket Inquiry" style={{
+                  fontFamily: F.body, fontSize: "11px", fontWeight: 500,
+                  letterSpacing: "0.15em", textTransform: "uppercase",
+                  color: C.cream, background: "transparent", border: `1px solid ${C.border}`,
+                  padding: "16px 28px", textDecoration: "none", display: "inline-block",
+                }}>
+                  Group Tickets
+                </a>
+              </div>
             </div>
           </Reveal>
+
+          {/* ── ARTIST SUBMISSION ── */}
           <Reveal delay={0.1}>
-            <div id="tickets" style={{ background: C.panel, padding: "64px 48px", position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: C.gold }} />
-              <div style={{ fontFamily: F.mono, fontSize: "9px", letterSpacing: "0.4em", textTransform: "uppercase", color: C.gold, marginBottom: "20px" }}>For Fans</div>
-              <h3 style={{ fontFamily: F.display, fontSize: "clamp(24px,3.5vw,44px)", fontWeight: 600, letterSpacing: "0.04em", color: C.cream, marginBottom: "16px" }}>GET YOUR TICKET</h3>
+            <div style={{ background: C.surface, padding: "64px 48px", position: "relative", overflow: "hidden", height: "100%" }}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: C.crimson }} />
+              <div style={{ fontFamily: F.mono, fontSize: "9px", letterSpacing: "0.4em", textTransform: "uppercase", color: C.crimson, marginBottom: "20px" }}>
+                For Artists
+              </div>
+              <h3 style={{ fontFamily: F.display, fontSize: "clamp(24px,3.5vw,44px)", fontWeight: 600, letterSpacing: "0.04em", color: C.cream, marginBottom: "16px" }}>
+                SUBMIT YOUR SET
+              </h3>
               <p style={{ fontFamily: F.body, fontSize: "14px", lineHeight: 1.8, color: C.muted, marginBottom: "32px" }}>
-                Join the room where the next wave breaks. General Admission is your all-access pass to every performance of the night.
+                Emerging artists can apply for performance slots. We review your music, your presence, your hunger. No label co-sign required. No gatekeeping — just talent.
               </p>
-              <a href="https://huglife.vercel.app/#tickets" target="_blank" rel="noopener noreferrer" style={{ fontFamily: F.body, fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: C.base, background: C.gold, padding: "15px 40px", textDecoration: "none", display: "inline-block" }}>Buy Tickets →</a>
+              <a href="mailto:thekollectiveworldwide@gmail.com?subject=Underground King Artist Submission" style={{
+                fontFamily: F.body, fontSize: "11px", fontWeight: 700,
+                letterSpacing: "0.15em", textTransform: "uppercase",
+                color: C.cream, background: C.crimson, padding: "16px 40px",
+                textDecoration: "none", display: "inline-block", transition: "all 0.3s",
+              }}
+                onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"}
+                onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"}
+              >
+                Submit Now →
+              </a>
             </div>
           </Reveal>
         </div>
+
+        {/* ── ADDITIONAL PATHS ── */}
+        <Reveal delay={0.2}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2px", background: C.border }}>
+            {[
+              { icon: "🏢", title: "Corporate", sub: "Private buyouts & team events", href: "mailto:thekollectiveworldwide@gmail.com?subject=Corporate Inquiry - Underground King" },
+              { icon: "🤝", title: "Sponsor", sub: "Brand activation at the show", href: "mailto:thekollectiveworldwide@gmail.com?subject=Sponsor Inquiry - Underground King" },
+              { icon: "📸", title: "Press / Media", sub: "Coverage & credentials", href: "mailto:thekollectiveworldwide@gmail.com?subject=Press Inquiry - Underground King" },
+            ].map(opt => (
+              <a key={opt.title} href={opt.href} style={{ textDecoration: "none" }}>
+                <div style={{ background: C.base, padding: "24px 20px", display: "flex", flexDirection: "column", gap: "6px", transition: "background 0.3s", cursor: "pointer" }}
+                  onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.background = `${C.crimson}12`}
+                  onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.background = ""}
+                >
+                  <div style={{ fontSize: "18px" }}>{opt.icon}</div>
+                  <div style={{ fontFamily: F.body, fontSize: "13px", fontWeight: 600, color: C.cream }}>{opt.title}</div>
+                  <div style={{ fontFamily: F.body, fontSize: "11px", color: C.muted }}>{opt.sub}</div>
+                  <div style={{ fontFamily: F.mono, fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", color: C.crimson }}>Inquire →</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* Trust signals */}
+        <div style={{ marginTop: "32px", display: "flex", gap: "32px", justifyContent: "center", flexWrap: "wrap" }}>
+          {["Powered by Eventbrite", "Secure Checkout", "Instant Confirmation", "18+ Event"].map(s => (
+            <div key={s} style={{ fontFamily: F.mono, fontSize: "9px", color: "rgba(255,255,255,0.18)", letterSpacing: "0.2em" }}>{s}</div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        @keyframes ticketPulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+      `}</style>
     </section>
   );
 }
