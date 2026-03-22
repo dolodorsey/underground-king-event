@@ -48,6 +48,16 @@ function Nav() {
   useEffect(() => { const h = () => setSc(window.scrollY > 60); window.addEventListener("scroll", h, { passive: true }); return () => window.removeEventListener("scroll", h); }, []);
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, padding: sc ? "12px clamp(20px,4vw,60px)" : "24px clamp(20px,4vw,60px)", display: "flex", justifyContent: "space-between", alignItems: "center", background: sc ? "rgba(8,8,8,0.97)" : "transparent", backdropFilter: sc ? "blur(16px)" : "none", borderBottom: sc ? `1px solid ${C.border}` : "none", transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)" }}>
+<style>{`@media(max-width:768px){
+  .dg,.DG,[style*="gridTemplateColumns"]{grid-template-columns:1fr!important}
+  .nl,.desktop-nav{display:none!important}
+  .fg,.stat-grid,.feature-grid{grid-template-columns:1fr!important}
+  .eg{grid-template-columns:1fr!important}
+  h1,h2,.hero-title{word-break:break-word}
+  nav{padding:16px!important}
+  section{padding-left:16px!important;padding-right:16px!important}
+}`}</style>
+
       <div>
         <span style={{ fontFamily: F.display, fontSize: "clamp(16px,2vw,20px)", fontWeight: 600, letterSpacing: "0.2em", color: C.cream, display: "block", lineHeight: 1 }}>UNDERGROUND</span>
         <span style={{ fontFamily: F.display, fontSize: "clamp(16px,2vw,20px)", fontWeight: 600, letterSpacing: "0.2em", color: C.crimson, display: "block", lineHeight: 1 }}>KING</span>
@@ -356,15 +366,6 @@ function TakeYourPlace() {
           50% { opacity: 0.3; }
         }
       `}
-@media(max-width:768px){
-  .dg,.DG,[style*="gridTemplateColumns"]{grid-template-columns:1fr!important}
-  .nl,.desktop-nav{display:none!important}
-  .fg,.stat-grid,.feature-grid{grid-template-columns:1fr!important}
-  .eg{grid-template-columns:1fr!important}
-  h1,h2,.hero-title{word-break:break-word}
-  nav{padding:16px!important}
-  section{padding-left:16px!important;padding-right:16px!important}
-}
 </style>
     </section>
   );
