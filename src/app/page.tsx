@@ -355,7 +355,17 @@ function TakeYourPlace() {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.3; }
         }
-      `}</style>
+      `}
+@media(max-width:768px){
+  .dg,.DG,[style*="gridTemplateColumns"]{grid-template-columns:1fr!important}
+  .nl,.desktop-nav{display:none!important}
+  .fg,.stat-grid,.feature-grid{grid-template-columns:1fr!important}
+  .eg{grid-template-columns:1fr!important}
+  h1,h2,.hero-title{word-break:break-word}
+  nav{padding:16px!important}
+  section{padding-left:16px!important;padding-right:16px!important}
+}
+</style>
     </section>
   );
 }
@@ -421,7 +431,7 @@ function Footer() {
 
 export default function UndergroundKing() {
   return (
-    <div style={{ background: C.base }}>
+    <div style={{ background: C.base ,overflowX:'hidden'}}>
       <Nav /><Hero /><BuiltFor /><AllPresence /><ArtistSpotlight /><TakeYourPlace /><FAQ /><Footer />
     </div>
   );
